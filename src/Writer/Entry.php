@@ -562,7 +562,7 @@ class Entry
      * @throws Exception\InvalidArgumentException
      * @return Entry
      */
-    public function setEnclosure(array $enclosure)
+    public function addEnclosure(array $enclosure)
     {
         if (! isset($enclosure['uri'])) {
             throw new Exception\InvalidArgumentException('Enclosure "uri" is not set');
@@ -570,7 +570,7 @@ class Entry
         if (! Uri::factory($enclosure['uri'])->isValid()) {
             throw new Exception\InvalidArgumentException('Enclosure "uri" is not a valid URI/IRI');
         }
-        $this->data['enclosure'] = $enclosure;
+        $this->data['enclosure'][] = $enclosure;
 
         return $this;
     }

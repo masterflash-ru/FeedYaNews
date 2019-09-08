@@ -228,43 +228,45 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
     protected function _setEnclosure(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
-        $data = $this->container->getEnclosure();
-        if ((! $data || empty($data))) {
+        $data_arr = $this->container->getEnclosure();
+        if ((! $data_arr || empty($data_arr))) {
             return;
         }
-        if (! isset($data['type'])) {
-            $exception = new Writer\Exception\InvalidArgumentException('Enclosure "type" is not set');
-            if (! $this->ignoreExceptions) {
-                throw $exception;
-            } else {
-                $this->exceptions[] = $exception;
-                return;
+        foreach ($data_arr as $data){
+            if (! isset($data['type'])) {
+                $exception = new Writer\Exception\InvalidArgumentException('Enclosure "type" is not set');
+                if (! $this->ignoreExceptions) {
+                    throw $exception;
+                } else {
+                    $this->exceptions[] = $exception;
+                    return;
+                }
             }
-        }
-        if (! isset($data['length'])) {
-            $exception = new Writer\Exception\InvalidArgumentException('Enclosure "length" is not set');
-            if (! $this->ignoreExceptions) {
-                throw $exception;
-            } else {
-                $this->exceptions[] = $exception;
-                return;
+            if (! isset($data['length'])) {
+                $exception = new Writer\Exception\InvalidArgumentException('Enclosure "length" is not set');
+                if (! $this->ignoreExceptions) {
+                    throw $exception;
+                } else {
+                    $this->exceptions[] = $exception;
+                    return;
+                }
             }
-        }
-        if ((int) $data['length'] < 0 || ! ctype_digit((string) $data['length'])) {
-            $exception = new Writer\Exception\InvalidArgumentException('Enclosure "length" must be an integer'
-            . ' indicating the content\'s length in bytes');
-            if (! $this->ignoreExceptions) {
-                throw $exception;
-            } else {
-                $this->exceptions[] = $exception;
-                return;
+            if ((int) $data['length'] < 0 || ! ctype_digit((string) $data['length'])) {
+                $exception = new Writer\Exception\InvalidArgumentException('Enclosure "length" must be an integer'
+                . ' indicating the content\'s length in bytes');
+                if (! $this->ignoreExceptions) {
+                    throw $exception;
+                } else {
+                    $this->exceptions[] = $exception;
+                    return;
+                }
             }
+            $enclosure = $this->dom->createElement('enclosure');
+            $enclosure->setAttribute('type', $data['type']);
+            $enclosure->setAttribute('length', $data['length']);
+            $enclosure->setAttribute('url', $data['uri']);
+            $root->appendChild($enclosure);
         }
-        $enclosure = $this->dom->createElement('enclosure');
-        $enclosure->setAttribute('type', $data['type']);
-        $enclosure->setAttribute('length', $data['length']);
-        $enclosure->setAttribute('url', $data['uri']);
-        $root->appendChild($enclosure);
     }
 
     /**

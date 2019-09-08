@@ -25,20 +25,9 @@ class Writer
     /**
      * Feed type constants
      */
-    const TYPE_ANY              = 'any';
-    const TYPE_ATOM_03          = 'atom-03';
-    const TYPE_ATOM_10          = 'atom-10';
-    const TYPE_ATOM_ANY         = 'atom';
-    const TYPE_RSS_090          = 'rss-090';
-    const TYPE_RSS_091          = 'rss-091';
-    const TYPE_RSS_091_NETSCAPE = 'rss-091n';
-    const TYPE_RSS_091_USERLAND = 'rss-091u';
-    const TYPE_RSS_092          = 'rss-092';
-    const TYPE_RSS_093          = 'rss-093';
-    const TYPE_RSS_094          = 'rss-094';
-    const TYPE_RSS_10           = 'rss-10';
-    const TYPE_RSS_20           = 'rss-20';
-    const TYPE_RSS_ANY          = 'rss';
+    //const TYPE_ANY              = 'any';
+   // const TYPE_RSS_20           = 'rss-20';
+    //const TYPE_RSS_ANY          = 'rss';
 
     /**
      * @var ExtensionManagerInterface
@@ -181,7 +170,6 @@ class Writer
      */
     public static function registerCoreExtensions()
     {
-        static::registerExtension('DublinCore');
         static::registerExtension('Content');
     }
 

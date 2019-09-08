@@ -15,11 +15,6 @@ class StandaloneExtensionManager implements ExtensionManagerInterface
 {
     private $extensions = [
         'Content\Renderer\Entry'       => Extension\Content\Renderer\Entry::class,
-        'DublinCore\Renderer\Entry'    => Extension\DublinCore\Renderer\Entry::class,
-        'DublinCore\Renderer\Feed'     => Extension\DublinCore\Renderer\Feed::class,
-        //'Slash\Renderer\Entry'         => Extension\Slash\Renderer\Entry::class,
-        'Threading\Renderer\Entry'     => Extension\Threading\Renderer\Entry::class,
-        'WellFormedWeb\Renderer\Entry' => Extension\WellFormedWeb\Renderer\Entry::class,
     ];
 
     /**

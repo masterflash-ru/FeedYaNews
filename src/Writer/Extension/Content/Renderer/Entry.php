@@ -17,6 +17,7 @@ use Mf\FeedYaNews\Writer\Extension;
 */
 class Entry extends Extension\AbstractRenderer
 {
+    protected $called = false;
 
     /**
      * Render entry
@@ -26,6 +27,10 @@ class Entry extends Extension\AbstractRenderer
     public function render()
     {
         $this->_setContent($this->dom, $this->base);
+        if ($this->called) {
+            $this->_appendNamespaces();
+        }
+
     }
 
     /**
@@ -47,7 +52,15 @@ class Entry extends Extension\AbstractRenderer
         $root->appendChild($element);
         $cdata = $dom->createCDATASection($content);
         $element->appendChild($cdata);
+        $this->called = true;
     }
 
-    protected function _appendNamespaces(){}
+    protected function _appendNamespaces()
+    {
+        $this->getRootElement()->setAttribute(
+            'xmlns:yandex',
+            'http://news.yandex.ru'
+        );
+    }
+
 }

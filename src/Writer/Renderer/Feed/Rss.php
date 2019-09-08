@@ -44,7 +44,6 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
         $rss = $this->dom->createElement('rss');
         $this->setRootElement($rss);
         $rss->setAttribute('version', '2.0');
-        $rss->setAttribute('xmlns:yandex', 'http://news.yandex.ru');
         $rss->setAttribute('xmlns:media', 'http://search.yahoo.com/mrss/');
 
         $channel = $this->dom->createElement('channel');
@@ -209,9 +208,9 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getGenerator()) {
             $this->getDataContainer()->setGenerator(
-                'Zend_Feed_Writer',
+                'Mf_feed_yanews',
                 Version::VERSION,
-                'http://framework.zend.com'
+                'https://www.masterflash.ru'
             );
         }
 

@@ -11,5 +11,5 @@ namespace Mf\FeedYaNews\Writer;
 
 abstract class Version
 {
-    const VERSION = '2';
+    const VERSION = '1';
 }
