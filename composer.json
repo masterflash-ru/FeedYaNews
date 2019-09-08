@@ -10,9 +10,12 @@
     "homepage": "https://masterflash.ru/",
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require": {
+   "require": {
         "php": "^7.1",
-        "zendframework/zend-feed": "^2.9.0"
+        "ext-dom": "*",
+        "ext-libxml": "*",
+        "zendframework/zend-escaper": "^2.5.2",
+        "zendframework/zend-validator": "^2.10.1"
     },
     "autoload": {
         "psr-4": {
