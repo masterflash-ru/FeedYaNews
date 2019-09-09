@@ -291,25 +291,25 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
 
     protected function _setPdaLink(DOMDocument $dom, DOMElement $root)
     {
-        // @codingStandardsIgnoreEnd
-        if (! $this->getDataContainer()->getLink()) {
+        $pdalink = $this->getDataContainer()->getPdaLink();
+        if ((! $pdalink || empty($pdalink))) {
             return;
         }
         $link = $dom->createElement('pdalink');
         $root->appendChild($link);
-        $text = $dom->createTextNode($this->getDataContainer()->getPdaLink());
+        $text = $dom->createTextNode($pdalink);
         $link->appendChild($text);
     }
     
     protected function _setAmpLink(DOMDocument $dom, DOMElement $root)
     {
-        // @codingStandardsIgnoreEnd
-        if (! $this->getDataContainer()->getLink()) {
+        $amplink = $this->getDataContainer()->getAmpLink();
+        if ((! $amplink || empty($amplink))) {
             return;
         }
         $link = $dom->createElement('amplink');
         $root->appendChild($link);
-        $text = $dom->createTextNode($this->getDataContainer()->getAmpLink());
+        $text = $dom->createTextNode($amplink);
         $link->appendChild($text);
     }
    
