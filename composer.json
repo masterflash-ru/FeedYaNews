@@ -3,7 +3,7 @@
     "description": "обработчик для ленты Яндекс новостей",
     "license": "BSD-3-Clause",
     "keywords": [
-        "zf",
+        "zf3",
         "zendframework",
         "RSS For Yandex News"
     ],
