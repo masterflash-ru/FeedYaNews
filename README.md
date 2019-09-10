@@ -22,6 +22,9 @@ use Mf\FeedYaNews\Writer\Feed;
             'email' => 'paddy@example.com',
             'uri'   => 'https://zrkuban.ru',
         ]);
+        
+        //Если нужно учитывать и часовой пояс, то задавать дату можно только так
+        //если передавать время в виде целого числа, то пояс не будет учитываться
         $feed->setDateModified(new \DateTime("2019-09-08 0:39:23"));
         
         //логотип
@@ -51,7 +54,8 @@ use Mf\FeedYaNews\Writer\Feed;
         $entry->addCategory([
                     'term'=>"news",
                 ]);
-        //медиафайл
+        
+        //медиафайлы, можно прикреплять множество
         $entry->addEnclosure([
             "uri"=>"https://www.zrkuban.ru/App/View/images/logo_100_100.jpg",
             "type"=>"image/jpeg",
@@ -67,8 +71,10 @@ use Mf\FeedYaNews\Writer\Feed;
         $entry->setContent(
             'Подробно статья Подробно статья Подробно статья Подробно статья Подробно статья '
         );
- 
+        
+        //добавить в ленту элемент статьи
         $feed->addEntry($entry);
         
+        //вывод в XML, заголовки в ответ сервера не добавляются
         echo $feed->export();
 ```
