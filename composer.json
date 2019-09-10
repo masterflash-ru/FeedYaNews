@@ -1,6 +1,6 @@
 {
     "name": "masterflash-ru/feed-yanews",
-    "description": "обработчик для ленты Яндекс новостей",
+    "description": "генератор ленты Яндекс новостей",
     "license": "BSD-3-Clause",
     "keywords": [
         "zf3",
